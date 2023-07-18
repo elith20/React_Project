@@ -1,0 +1,27 @@
+body{
+    background-color: #7f6f65;
+}
+
+.menu{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: #2d2d2d;
+}
+
+.manu div{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.menu ul button{
+    padding: 15px;
+    margin:15px;
+    border-radius: 15px;
+    width: 100px;
+    border: 2px solid #66dbf9;
+    color: #66dbf9;
+    background-color: #2d2d2d;
+    
+}

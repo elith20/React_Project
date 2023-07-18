@@ -1,0 +1,26 @@
+.Header, .Body, .Footer{
+    background-color: #504f4f;
+    border: 5px ridge #66dbf9;
+    border-radius: 5px;
+    padding: 15px;
+    background-color: #504f4f;
+    color: #66dbf9;
+}
+
+.Body{
+    border-top: none;
+    border-bottom: none;
+
+}
+
+.Dates{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.Dates > *{
+    width: 45%;
+}

@@ -1,0 +1,59 @@
+.card{
+    width: 300px;
+    min-height: 400px;
+    display: inline-block;
+    background-color: #2d2d2d;
+    color: #66dbf9;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 10px 50px;
+    font-family: 'Times New Roman', Times, serif;
+    border: 2px ridge #66dbf9;
+    border-radius: 10px;
+}
+
+.checkedCard{
+    border: 2px ridge red;
+
+}
+
+.Title{
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #66dbf9;
+
+}
+
+.items > *, .items{
+    margin-bottom: 10px;
+    background-color: #525151;
+    color: #66dbf9;
+    border: none;
+    border-radius: 5px;
+}
+
+.cardBtn{
+    background-color: #525151;
+    border: 1px solid #66dbf9;
+    margin: 20px 20px 0 30px;
+}
+
+.describe{
+    height: 100px;
+    overflow: auto;
+}
+
+.text{
+    
+    text-decoration: underline;
+    font-style: italic;
+    font-weight: bolder;
+    margin-right: 10px;
+}
+
+.cardCheckbox{
+    width: 20px;
+    height: 20px;
+    accent-color: #66dbf9; 
+}

@@ -1,0 +1,75 @@
+.Modal{
+  background-color: rgb(235, 230, 230, 0.1);
+  font-family: 'Times New Roman', Times, serif;
+}
+
+
+.Form{
+  border: 5px ridge #66dbf9;
+  border-radius: 10px;
+  padding: 15px;
+  background-color: #504f4f;
+  color: #66dbf9;
+}
+
+.Title{
+  width: 100%;
+  height: 30px;
+  padding: 5px 10px;
+  box-sizing: border-box;
+}
+
+.textarea{
+  height: 50px;
+  padding: 5px 10px;
+  box-sizing: border-box;
+}
+  
+.description{
+  height: 60px;
+  border-radius: 20px;
+  padding: 5px 10px;
+  border: 1px solid #66dbf9;
+  box-sizing: border-box;
+}
+  
+.importance{
+    text-align: center;
+    padding: 5px 10px;
+    box-sizing: border-box;
+}
+
+.date{
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.Button{
+  padding: 15px;
+  margin:15px;
+  border-radius: 15px;
+  width: 100px;
+  border: 2px solid #66dbf9;
+  color: #66dbf9;
+  background-color: #2d2d2d; 
+}
+
+
+.Button:hover{
+  width: 110px;
+  border: 2px solid #66dbf9;
+  color: #66dbf9;
+  background-color: #2d2d2d;
+  transition: 0.5s;
+}
+
+.newtask{
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  background-color: #2d2d2d;
+  
+}
