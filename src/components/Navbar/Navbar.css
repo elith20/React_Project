@@ -1,6 +1,6 @@
 body{
     background-color: #7f6f65;
-}
+    }
 
 .menu{
     display: flex;
@@ -15,7 +15,7 @@ body{
     align-content: center;
 }
 
-.menu ul button{
+.menu>*{
     padding: 15px;
     margin:15px;
     border-radius: 15px;
@@ -23,5 +23,6 @@ body{
     border: 2px solid #66dbf9;
     color: #66dbf9;
     background-color: #2d2d2d;
-    
+    text-decoration: none;
+    text-align: center;
 }

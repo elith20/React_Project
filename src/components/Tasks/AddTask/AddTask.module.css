@@ -9,7 +9,7 @@
   border-radius: 10px;
   padding: 15px;
   background-color: #504f4f;
-  color: #66dbf9;
+  color: #66dbf9 !important;
 }
 
 .Title{
@@ -48,13 +48,14 @@
 }
 
 .Button{
+  
   padding: 15px;
   margin:15px;
   border-radius: 15px;
-  width: 100px;
-  border: 2px solid #66dbf9;
-  color: #66dbf9;
-  background-color: #2d2d2d; 
+  width: 100px !important;
+  border: 2px solid #66dbf9 !important;
+  color: #66dbf9 !important;
+  background-color: #2d2d2d !important; 
 }
 
 
@@ -70,6 +71,6 @@
   display: flex;
   justify-content: center;
   align-items:center;
-  background-color: #2d2d2d;
+  background-color: #2d2d2d !important;
   
 }

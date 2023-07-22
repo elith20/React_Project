@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import AddTask from "../Tasks/AddTask/AddTask";
 import Tasks from "../Tasks/Tasks/Tasks";
 import {Row, Col, Button } from "react-bootstrap";
-// import Tasks from "../Tasks/Tasks/Tasks";
+import Navbar from "../Navbar/Navbar";
 import EditModal from "../EditModal";
 import Confirm from "../Confirm";
 
@@ -107,6 +107,7 @@ export default class ToDo extends Component{
         const{toDoList, checkedTasks,  editedTask, toggleConfirmModal} = this.state;
         return(
             <div style={{background: "#525151"}}>
+            <Navbar/>
             <AddTask 
                 handleAddTask = {this.handleAddTask}
                 disabledButton={checkedTasks.size}
