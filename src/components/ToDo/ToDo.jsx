@@ -112,6 +112,14 @@ export default class ToDo extends Component{
                 handleAddTask = {this.handleAddTask}
                 disabledButton={checkedTasks.size}
             />
+             <Row className="d-flex justify-content-center">
+                {checkedTasks.size && <Button
+                    onClick={this.handleToggleShowCofirmModal}
+                    variant="danger"
+                    className="w-25 mt-5"
+                    disabled={!checkedTasks.size}
+                >Remove checked tasks</Button>}
+            </Row>
             <Row >
                 {toDoList.map((item)=>{
                     return(
@@ -128,14 +136,7 @@ export default class ToDo extends Component{
                     })
                 }
             </Row>
-            <Row>
-                {checkedTasks.size && <Button
-                    onClick={this.handleToggleShowCofirmModal}
-                    variant="danger"
-                    className="w-25 mt-5"
-                    disabled={!checkedTasks.size}
-                >Remove checked tasks</Button>}
-            </Row>
+           
             <Confirm
                 show={toggleConfirmModal}
                 onHide={this.toggleHide}

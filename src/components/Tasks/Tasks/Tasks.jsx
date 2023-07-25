@@ -36,7 +36,7 @@ export default class Tasks extends Component {
                         className={`${classes.cardCheckbox} m-2`}
                         type="checkbox"
                         />
-                        <Card.Title className={classes.Title}>{item.title}</Card.Title>
+                        <Card.Title className={classes.Card}>{item.title}</Card.Title>
                         <ListGroup className={classes.items} variant="flush">
                             <ListGroup.Item className={classes.describe}><span className={classes.text}>Description:</span> {item.description}</ListGroup.Item>
                             <ListGroup.Item>Importance: {item.importance}</ListGroup.Item>

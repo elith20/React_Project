@@ -38,7 +38,7 @@ export default class AddTask extends Component {
 
     handleRadioValue = (e) => {
         this.setState({
-            importance: e.target.name
+            importance: e.target.value
         })
     }
 
@@ -90,6 +90,29 @@ export default class AddTask extends Component {
         let toDoList = [...this.state.toDoList];
         toDoList.push(newObj);
         
+        fetch('http://localhost:3004/tasks', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(toDoList)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw response.error
+            }
+            return response.json()
+        })
+        .then(task => {
+            toDoList.push(task);
+            this.setState({
+                toDoList,
+                show: false
+
+            })
+        })
+        .catch(error => console.log(error))
+
         this.handleOpenClose()
         this.setState({
             toDoList,
