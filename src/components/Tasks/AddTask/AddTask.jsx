@@ -1,17 +1,12 @@
 import React, { Component } from "react";
 import classes from'./AddTask.module.css'
-import idGenerator from "../../../utils/utils";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 
 
-
-
-
 export default class AddTask extends Component {
     state = {
-        id: idGenerator(),
         toDoList: [],
         title: "",
         description: "",
@@ -19,8 +14,7 @@ export default class AddTask extends Component {
         startdate: "",
         enddate: "",
         developers: "",
-        show: false,
-    }
+        }
 
     handleTitleValue = (event) => {
         this.setState({
@@ -68,21 +62,19 @@ export default class AddTask extends Component {
 
     handleAddTask = (event) => {
         event.preventDefault();
-        const { title, description, importance, startdate, enddate, developer, show} = this.state;
+        const { title, description, importance, startdate, enddate, developer} = this.state;
         // if (!title || !description || !importance || !developer || !startdate || !enddate) {
 
         //     return;
         // }
 
         let newObj = {
-            id: idGenerator(),
             title,
             description,
             importance,
             startdate,
             enddate,
             developer,
-            show,
         }
 
         this.props.handleAddTask(newObj);
@@ -90,28 +82,6 @@ export default class AddTask extends Component {
         let toDoList = [...this.state.toDoList];
         toDoList.push(newObj);
         
-        fetch('http://localhost:3004/tasks', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(toDoList)
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw response.error
-            }
-            return response.json()
-        })
-        .then(task => {
-            toDoList.push(task);
-            this.setState({
-                toDoList,
-                show: false
-
-            })
-        })
-        .catch(error => console.log(error))
 
         this.handleOpenClose()
         this.setState({
@@ -122,7 +92,6 @@ export default class AddTask extends Component {
             startdate: '',
             enddate: '',
             developer: '',
-            show: false
         })
     }
 
@@ -130,31 +99,36 @@ export default class AddTask extends Component {
         if (event.key === "Enter") {
           this.handleAddTask(event)
         }
-    
     }
 
     render() {
-        const { title, developer, importance, startdate, enddate, description } = this.state;
+        const { title, description, importance, startdate, enddate, developer } = this.state;
         const { disabledButton } = this.props;
 
         return (
             <div>               
                 <div className={classes.newtask}>
-                    <Button 
+                    <button 
                         className={classes.Button} 
                         onClick={this.handleOpenClose}
                         disabled={disabledButton}
                         >New Task
-                    </Button>
+                    </button>
                 </div>
-                <Modal show={this.state.show} onHide={this.handleOpenClose} className={classes.Modal}>
+                <Modal 
+                    show={this.state.show} 
+                    onHide={this.handleOpenClose} 
+                    className={classes.Modal}>
                 <Modal.Dialog >
                     <Modal.Header closeButton>
                         <Modal.Title className="text-info">Add New Task</Modal.Title>
                     </Modal.Header>
 
                     <Modal.Body>
-                        <Form className={classes.Form}>
+                        <Form 
+                            className={classes.Form} 
+                            onKeyDown={this.handleAddKeyDown} 
+                            >
                             <Form.Group  >
                                 <Form.Label>Title</Form.Label>
                                 <Form.Control 
@@ -213,33 +187,6 @@ export default class AddTask extends Component {
                                     />
                                     </Form.Label>
                                 </Form.Group>
-                                    {/* <Form.Check
-                                        inline="true"
-                                        label="High"
-                                        name="importance"
-                                        type="radio"
-                                        id="High"
-                                        checked={importance === 'High'}
-                                        onChange={this.handleRadioValue}
-                                    />
-                                    <Form.Check
-                                        inline="true"
-                                        label="Medium"
-                                        name="importance"
-                                        type="radio"
-                                        id="Medium"
-                                        checked={importance === 'Medium'}
-                                        onChange={this.handleRadioValue}
-                                    />
-                                    <Form.Check
-                                        inline="true"
-                                        label="Low"
-                                        name="importance"
-                                        type="radio"
-                                        id="Low"
-                                        checked={importance === 'Low'}
-                                        onChange={this.handleRadioValue}
-                                    /> */}
                             </Form.Group>
                             <Form.Label className="text-info">Choose duration</Form.Label>
                             <Form.Group className={classes.date}>
@@ -262,7 +209,7 @@ export default class AddTask extends Component {
                                     value={developer}
                                     onChange={this.handleSelectValue}
                                     className="text-info">
-                                    <option >Choose developer</option>
+                                    <option value=''>Choose developer</option>
                                     <option value="Dolera">Dolera</option>
                                     <option value="Aksana">Aksana</option>
                                     <option value="Developer3">Developer3</option>
@@ -277,7 +224,6 @@ export default class AddTask extends Component {
                         <Button 
                             variant="info" 
                             onClick={this.handleAddTask} 
-                            onKeyDown={this.handleAddKeyDown}
                             disabled={disabledButton}
                             >Add Task</Button>
                         <Button 

@@ -23,8 +23,9 @@ class EditModal extends PureComponent {
     }
 
     handleRadioChange = (event) => {
-        this.setState({ 
-            importance: event.target.name })
+        this.setState({
+            importance: event.target.name
+        })
     }
 
     handleSelectChange = (event) => {
@@ -49,12 +50,12 @@ class EditModal extends PureComponent {
         event.preventDefault();
 
         const { id, title, description, startdate, enddate, importance, developer } = this.state;
-        // if (!title || !description || !importance || !developer) {
+        // if (!title || !description || !importance || !startdate || !enddate || !developer) {
 
         //     return;
         // }
 
-        let neweObj = {
+        let newObj = {
             id: id,
             title,
             description,
@@ -64,14 +65,13 @@ class EditModal extends PureComponent {
             developer,
         }
 
-        this.props.onSave(neweObj);
+        this.props.onSave(newObj);
     }
 
     handleAddKeyDown = (event) => {
         if (event.key === "Enter") {
             this.handleAddEditedTask(event)
         }
-
     }
 
     render() {
@@ -139,7 +139,6 @@ class EditModal extends PureComponent {
                                 id="formHorizontalRadios2"
                                 checked={importance === "medium"}
                                 onChange={this.handleRadioChange}
-
                             />
                             <Form.Check
                                 inline="true"
@@ -150,17 +149,17 @@ class EditModal extends PureComponent {
                                 checked={importance === "high"}
                                 onChange={this.handleRadioChange}
                             />
-                            
+
                         </Form.Group>
                         <Form.Label className="text-info">Change duration</Form.Label>
                         <Form.Group className={classes.Dates}>
-                            <Form.Control 
+                            <Form.Control
                                 inline="true"
                                 type="date"
                                 id="startdate"
                                 value={startdate}
                                 onChange={this.handleStartDate} />
-                            <Form.Control 
+                            <Form.Control
                                 inline="true"
                                 type="date"
                                 id="enddate"
@@ -168,31 +167,19 @@ class EditModal extends PureComponent {
                                 onChange={this.handleEndDate} />
                         </Form.Group>
                         <Form.Group >
-                                <Form.Select
-                                    aria-label="Default select example"
-                                    value={developer}
-                                    onChange={this.handleSelectValue}
-                                    className="text-info">
-                                    <option >Choose developer</option>
-                                    <option value="Dolera">Dolera</option>
-                                    <option value="Aksana">Aksana</option>
-                                    <option value="Developer3">Developer3</option>
-                                    <option value="Developer 4">Developer 4</option>
-                                    <option value="Developer 5">Developer 5</option>
-                                </Form.Select>
-                            </Form.Group>
-                        
-                        {/* <Form.Group as={Row} className="mb-3" controlId="formHorizontalCheck">
-                                <Col sm={{ span: 10, offset: 2 }}>
-                                    <Form.Check label="Remember me" />
-                                </Col>
-                            </Form.Group> */}
-
-                        {/* <Form.Group as={Row} className="mb-3">
-                                <Col sm={{ span: 10, offset: 2 }}>
-                                    <Button type="submit">Sign in</Button>
-                                </Col>
-                            </Form.Group> */}
+                            <Form.Select
+                                aria-label="Default select example"
+                                value={developer}
+                                onChange={this.handleSelectChange}
+                                className="text-info">
+                                <option >Choose developer</option>
+                                <option value="Dolera">Dolera</option>
+                                <option value="Aksana">Aksana</option>
+                                <option value="Developer 3">Developer3</option>
+                                <option value="Developer 4">Developer 4</option>
+                                <option value="Developer 5">Developer 5</option>
+                            </Form.Select>
+                        </Form.Group>
                     </Form>
                 </Modal.Body>
                 <Modal.Footer className={classes.Footer}>

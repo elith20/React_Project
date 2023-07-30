@@ -14,25 +14,73 @@ export default class ToDo extends Component{
         toggleConfirmModal: false,
         editedTask:null,
     }
-    
 
-    handleAddTask = (newObj)=>{
-       let toDoList = [...this.state.toDoList];
-       toDoList.push(newObj);
-       this.setState({
-        toDoList
-       });
+    componentDidMount(){
+        fetch('http://localhost:3004/tasks',{
+
+        })
+        .then(response =>{
+            if(!response.ok){
+                throw(response.error)
+            }
+            response.json()
+        })
+        .then(tasks => {
+            let toDoList = [...tasks]
+            this.setState({
+                toDoList
+            })
+        })
+        .catch(error=> {
+            console.log(error)
+        })
+    }
+
+    handleAddTask = (newObj) => {
+        let toDoList = [...this.state.toDoList];
+
+        fetch('http://localhost:3004/tasks', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newObj)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw response.error
+                }
+                return response.json()
+            })
+            .then(task => {
+                toDoList.push(task);
+                this.setState({
+                    toDoList,
+                    showNewTaskModal: false
+
+                })
+            })
+            .catch(error => console.log(error))
     }
 
     handleRemoveSingleTask = (taskId) => {
         let toDoList = [...this.state.toDoList];
 
-        toDoList = toDoList.filter(item => taskId !== item.id)
-
-        this.setState({
-            toDoList,
+        fetch(`http://localhost:3004/tasks/${taskId}`,{
+            method: 'DELETE',
         })
-
+        .then(response=>{
+            if(!response.ok){
+                throw(response.error)
+            }
+            response.json()
+        })
+        .then(tasks => {
+            toDoList = toDoList.filter(item => taskId !== item.id)
+            this.setState({
+                toDoList,
+            })
+        }).catch(error=> console.log(error))
     }
 
     handleCheckedTasks = (taskID) => {
@@ -50,23 +98,33 @@ export default class ToDo extends Component{
 
     }
 
-    
     handleRemovedCheckedTasks = () => {
         let toDoList = [...this.state.toDoList];
         let checkedTasks = new Set(this.state.checkedTasks);
-
+        
         checkedTasks.forEach(itemId => {
             toDoList = toDoList.filter(item => item.id !== itemId)
         })
 
-        checkedTasks.clear()
-
-        this.setState({
-            checkedTasks,
-            toDoList,
-            toggleConfirmModal: false
-
+        checkedTasks.forEach((itemId) =>{
+            fetch(`http://localhost:3004/tasks/${itemId}`,{
+            method: 'DELETE',
         })
+        .then(response=>{
+            if(!response.ok){
+                throw(response.error)
+            }
+            response.json()
+        })
+        .then(tasks => {
+            toDoList = toDoList.filter(item => itemId !== item.id)
+            this.setState({
+                toDoList,
+                checkedTasks: '',
+                toggleConfirmModal: false
+            })
+        }).catch(error=> console.log(error))
+    })
     }
 
     handleToggleShowCofirmModal = () => {
@@ -81,6 +139,7 @@ export default class ToDo extends Component{
         })
 
     }
+
     handleEditTask =(taskObj)=>{
         this.setState({
             editedTask:taskObj,
@@ -90,29 +149,44 @@ export default class ToDo extends Component{
     handleSaveEditedTask =(taskObj)=>{
     let toDoList = [...this.state.toDoList];
 
-    let index  = toDoList.findIndex((item)=>item.id === taskObj.id);
-    toDoList[index] = {
-        ...toDoList[index],
-        ...taskObj
-    }
-
-    this.setState({
-        toDoList,
-        editedTask:null
+    fetch(`http://localhost:3004/tasks/${taskObj.id}`,{
+        method: 'PUT',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(taskObj)
     })
+    .then(response => {
+        if(!response.ok){
+            throw response.error
+        }
+        response.json()
+    })
+    .then(task => {
+        let index  = toDoList.findIndex((item)=>item.id === taskObj.id);
 
+        toDoList[index] = {
+            ...taskObj
+        }
+
+        this.setState({
+            toDoList,
+            editedTask:null
+        })
+    })
+    .catch(error => console.log(error))
     }
 
     render(){
         const{toDoList, checkedTasks,  editedTask, toggleConfirmModal} = this.state;
         return(
-            <div style={{background: "#525151"}}>
+            <div>
             <Navbar/>
             <AddTask 
                 handleAddTask = {this.handleAddTask}
                 disabledButton={checkedTasks.size}
             />
-             <Row className="d-flex justify-content-center">
+             <Row className="">
                 {checkedTasks.size && <Button
                     onClick={this.handleToggleShowCofirmModal}
                     variant="danger"
