@@ -1,9 +1,9 @@
 .card{
     width: 300px;
-    min-height: 400px;
+    height: 470px;
     display: inline-block;
-    background-color: #2d2d2d;
-    color: #66dbf9;
+    background-color: #4a996b;
+    color: #c2ecf7;
     padding: 10px;
     box-sizing: border-box;
     margin: 10px 50px;
@@ -13,43 +13,67 @@
 }
 
 .checkedCard{
+    width: 300px;
+    height: 470px;
+    display: inline-block;
+    background-color: #4a996b;
+    color: #c2ecf7;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 10px 50px;
+    font-family: 'Times New Roman', Times, serif;
+    border-radius: 10px;
     border: 2px ridge red;
 
 }
 
-.Title{
+.CardTitle{
     text-transform: uppercase;
     text-align: center;
     margin-bottom: 20px;
-    color: #66dbf9;
+    color: #123d5f;
+    background-color: #50a34d;
+}
 
+p{
+    display: inline-block;
+    background-color: #50a34d;
+    text-decoration: underline;
+    font-style: italic;
+    font-weight: bolder;
+    padding: 3px 1px;
+    box-sizing: border-box;
 }
 
 .items > *, .items{
     margin-bottom: 10px;
-    background-color: #525151;
-    color: #66dbf9;
+    background-color: #50a34d;
+    color: #123d5f;
     border: none;
     border-radius: 5px;
 }
 
+.btn{
+    display: flex;
+    justify-content: space-around;
+    background-color: #4a996b;
+}
+
 .cardBtn{
-    background-color: #525151;
+    width: 100px;
+    background-color: #123d5f;
+    color: #4a996b;
     border: 1px solid #66dbf9;
-    margin: 20px 20px 0 30px;
+    border-radius: 10px;
+    padding: 5px 10px;
 }
 
 .describe{
     height: 100px;
     overflow: auto;
-}
-
-.text{
-    
-    text-decoration: underline;
-    font-style: italic;
-    font-weight: bolder;
-    margin-right: 10px;
+    padding: 3px 6px;
+    background-color: #50a34d;
+    border: 1px dotted #4a996b;
 }
 
 .cardCheckbox{
