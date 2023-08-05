@@ -6,7 +6,7 @@ body{
     display: flex;
     justify-content: center;
     align-content: center;
-    background-color: #2d2d2d;
+    background-color: #d3f0ec;
 }
 
 .manu div{
@@ -20,9 +20,9 @@ body{
     margin:15px;
     border-radius: 15px;
     width: 100px;
-    border: 2px solid #66dbf9;
-    color: #66dbf9;
-    background-color: #2d2d2d;
+    border: 2px solid #3D9A8B;
+    color: #123d5f;
+    background-color: #37c0ae;
     text-decoration: none;
     text-align: center;
 }

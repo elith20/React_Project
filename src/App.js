@@ -1,16 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import ToDo from "./components/ToDo/ToDo";
 import About from "./components/About/About";
 import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
 import {BrowserRouter as Router, Routes, Route,} from 'react-router-dom';
 
 
-export default class App extends Component {
- 
-
-    render() {
-       
-        return <>
+export default function App() {
+        return (<>
             <Router>
                 <Routes>
                     <Route path="/" element = {<ToDo/>}/>
@@ -19,6 +15,6 @@ export default class App extends Component {
                     <Route path = "*" element = {<NotFoundPage/>}/>
                 </Routes>
             </Router>
-            </>
-    }
+            </>)
+
 }
