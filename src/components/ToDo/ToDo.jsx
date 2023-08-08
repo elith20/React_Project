@@ -241,32 +241,32 @@ export default function ToDo(){
     const[toggleConfirmModal, setToggleConfirmModal] = useState(false);
     const[editedTask, setEditedTask] = useState(null)
 
-    useEffect(()=>{
-        fetch('http://localhost:3004/tasks',{
-        method: 'GET',
-        headers: {
-            "Content-Type": "application/json",
-        },
-        // body: JSON.stringify(newObj)
-    })
-        .then(response =>{
-            if(!response.ok){
-                throw(response.error)
-            }
-            response.json()
-        })
-        .then(tasks => {
-            // let toDoList = [...tasks]
-            setToDoList([tasks])
-        })
-        .catch(error=> {
-            console.log(error)
-        })
-    })
+    // useEffect((newObj)=>{
+    //     fetch('http://localhost:3004/tasks',{
+    //     method: 'GET',
+    //     headers: {
+    //         "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(newObj)
+    // })
+    //     .then(response =>{
+    //         if(!response.ok){
+    //             throw(response.error)
+    //         }
+    //         response.json()
+    //     })
+    //     .then(tasks => {
+    //         // let toDoList = [...tasks]
+    //         setToDoList(tasks)
+    //     })
+    //     .catch(error=> {
+    //         console.log(error)
+    //     })
+    // })
 
     function handleAddTask(newObj){
         // let toDoList = [...this.state.toDoList];
-
+        
         fetch('http://localhost:3004/tasks', {
             method: 'POST',
             headers: {
@@ -280,124 +280,128 @@ export default function ToDo(){
                 }
                 return response.json()
             })
-            .then(task => {
+            .then(toDoList => {
                 // toDoList.push(task);
                 // this.setState({
                 //     toDoList,
                 //     showNewTaskModal: false
 
                 // })
-                setToDoList(task)
+                // console.log(task.title)
+                // setToDoList(task)
+                setToDoList(toDoList)
+                     
             })
             .catch(error => console.log(error))
     }
 
-    function handleRemoveSingleTask(taskId){
-        // let toDoList = [...this.state.toDoList];
+    // function handleRemoveSingleTask(taskId){
+    //     // let toDoList = [...this.state.toDoList];
 
-        fetch(`http://localhost:3004/tasks/${taskId}`,{
-            method: 'DELETE',
-        })
-        .then(response=>{
-            if(!response.ok){
-                throw(response.error)
-            }
-            response.json()
-        })
-        .then(tasks => {
-            toDoList.filter(item => taskId !== item.id)
-            setToDoList(toDoList)
-        }).catch(error=> console.log(error))
-    }
+    //     fetch(`http://localhost:3004/tasks/${taskId}`,{
+    //         method: 'DELETE',
+    //     })
+    //     .then(response=>{
+    //         if(!response.ok){
+    //             throw(response.error)
+    //         }
+    //         response.json()
+    //     })
+    //     .then(tasks => {
+    //         toDoList.filter(item => taskId !== item.id)
+    //         setToDoList(toDoList)
+    //     }).catch(error=> console.log(error))
+    // }
 
-    function handleCheckedTasks(taskID){
+    // function handleCheckedTasks(taskID){
 
-        if (checkedTasks.has(taskID)) {
-            checkedTasks.delete(taskID);
-        } else {
-            checkedTasks.add(taskID);
-        }
+    //     if (checkedTasks.has(taskID)) {
+    //         checkedTasks.delete(taskID);
+    //     } else {
+    //         checkedTasks.add(taskID);
+    //     }
 
-        setCheckedTasks(checkedTasks)
+    //     setCheckedTasks(checkedTasks)
 
-    }
+    // }
 
-    function handleRemoveCheckedTasks(){
-        // let toDoList = [...this.state.toDoList];
-        // let checkedTasks = new Set(this.state.checkedTasks);
+    // function handleRemoveCheckedTasks(){
+    //     // let toDoList = [...this.state.toDoList];
+    //     // let checkedTasks = new Set(this.state.checkedTasks);
         
-        checkedTasks.forEach(itemId => {
-            toDoList.filter(item => item.id !== itemId)
-        })
+    //     checkedTasks.forEach(itemId => {
+    //         toDoList.filter(item => item.id !== itemId)
+    //     })
 
-        checkedTasks.forEach((itemId) =>{
-            fetch(`http://localhost:3004/tasks/${itemId}`,{
-            method: 'DELETE',
-        })
-        .then(response=>{
-            if(!response.ok){
-                throw(response.error)
-            }
-            response.json()
-        })
-        .then(tasks => {
-            toDoList.filter(item => itemId !== item.id)
-            this.setState({
-                toDoList,
-                checkedTasks: '',
-                toggleConfirmModal: false
-            })
-        }).catch(error=> console.log(error))
-    })
-    }
+    //     checkedTasks.forEach((itemId) =>{
+    //         fetch(`http://localhost:3004/tasks/${itemId}`,{
+    //         method: 'DELETE',
+    //     })
+    //     .then(response=>{
+    //         if(!response.ok){
+    //             throw(response.error)
+    //         }
+    //         response.json()
+    //     })
+    //     .then(tasks => {
+    //         toDoList.filter(item => itemId !== item.id)
+    //         this.setState({
+    //             toDoList,
+    //             checkedTasks: '',
+    //             toggleConfirmModal: false
+    //         })
+    //     }).catch(error=> console.log(error))
+    // })
+    // }
 
-    function handleToggleShowCofirmModal(){
-        setToggleConfirmModal(!toggleConfirmModal)
-    }
+    // function handleToggleShowCofirmModal(){
+    //     setToggleConfirmModal(!toggleConfirmModal)
+    // }
 
-    function toggleHide(){
-        setToggleConfirmModal(false)
-    }
+    // function toggleHide(){
+    //     setToggleConfirmModal(false)
+    // }
 
-    function handleEditTask(taskObj){
-        setEditedTask(taskObj)
-    }
+    // function handleEditTask(taskObj){
+    //     setEditedTask(taskObj)
+    // }
 
-    function handleSaveEditedTask(taskObj){
-    // let toDoList = [...this.state.toDoList];
+//     function handleSaveEditedTask(taskObj){
+//     // let toDoList = [...this.state.toDoList];
 
-    fetch(`http://localhost:3004/tasks/${taskObj.id}`,{
-        method: 'PUT',
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(taskObj)
-    })
-    .then(response => {
-        if(!response.ok){
-            throw response.error
-        }
-        response.json()
-    })
-    .then(task => {
-        let index  = toDoList.findIndex((item)=>item.id === taskObj.id);
+//     fetch(`http://localhost:3004/tasks/${taskObj.id}`,{
+//         method: 'PUT',
+//         headers: {
+//             "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify(taskObj)
+//     })
+//     .then(response => {
+//         if(!response.ok){
+//             throw response.error
+//         }
+//         response.json()
+//     })
+//     .then(task => {
+//         let index  = toDoList.findIndex((item)=>item.id === taskObj.id);
 
-        toDoList[index] = {
-            ...task
-        }
+//         toDoList[index] = {
+//             ...task
+//         }
 
-        // this.setState({
-        //     toDoList,
-        //     editedTask:null
-        // })
-        setToDoList()
-        setEditedTask(null)
-    })
-    .catch(error => console.log(error))
-}
+//         // this.setState({
+//         //     toDoList,
+//         //     editedTask:null
+//         // })
+//         setToDoList()
+//         setEditedTask(null)
+//     })
+//     .catch(error => console.log(error))
+// }
 
     
         // const{toDoList, checkedTasks,  editedTask, toggleConfirmModal} = this.state;
+        // let toDoList = toDoList
         return(
             <div>
             <Navbar/>
@@ -413,21 +417,28 @@ export default function ToDo(){
                     disabled={!checkedTasks.size}
                 >Remove checked tasks</Button>}
             </Row> */}
+            {/* <div>{<Tasks item = {toDoList}/>}</div>
+            <div>{typeof(toDoList)}</div>
+            <div>{toDoList.title}</div> */}
+            {/* <div>{toDoList.map((member)=>{
+                return(member)
+            })}</div> */}
             <Row >
-                {/* {toDoList.map((item)=>{ */}
-                    {/* return( */}
-                        <Col >
+                {toDoList.map((item)=>{
+                    //  console.log(toDoList)
+                    return(
+                        
                             <Tasks 
-                                item = {toDoList}
-                                handleCheckedTasks={handleCheckedTasks}
-                                handleRemoveSingleTask = {handleRemoveSingleTask}
-                                disabledButton={checkedTasks.size}
-                                handleEditTask={handleEditTask}
+                                item = {item}
+                                // handleCheckedTasks={handleCheckedTasks}
+                                // handleRemoveSingleTask = {handleRemoveSingleTask}
+                                // disabledButton={checkedTasks.size}
+                                // handleEditTask={handleEditTask}
                             />
-                        </Col>
-                        {/* ) */}
-                    {/* }) */}
-                {/* } */}
+                        
+                        ) 
+                     })
+                }
             </Row>
            
             {/* <Confirm

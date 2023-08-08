@@ -49,7 +49,7 @@ export default function Tasks(props) {
         <div className={classes.btn}>
             <button
                 className={classes.cardBtn}
-                onClick={() => props.handleEditTask(item)}
+                onClick={() => handleEditTask(item)}
                 disabled={disabledButton}
                 >Edit Task
             </button>
