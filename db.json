@@ -1,60 +1,8 @@
 {
   "tasks": [
     {
-      "title": "hjk",
-      "importance": "medium",
+      "description": "cvbn",
       "id": 1
-    },
-    {
-      "title": "ghjk",
-      "description": "fghjk",
-      "importance": "low",
-      "startdate": "2023-08-16",
-      "enddate": "2023-08-25",
-      "developer": "Aksana",
-      "id": 2
-    },
-    {
-      "id": 3
-    },
-    {
-      "title": "gbhnjm",
-      "description": "ghjkl",
-      "importance": "high",
-      "startdate": [],
-      "enddate": [],
-      "developer": "Aksana",
-      "id": 4
-    },
-    {
-      "title": [],
-      "description": [],
-      "importance": [],
-      "startdate": [],
-      "enddate": [],
-      "developer": [],
-      "id": 5
-    },
-    {
-      "title": [],
-      "description": [],
-      "importance": [],
-      "startdate": [],
-      "enddate": [],
-      "developer": [],
-      "id": 6
-    },
-    {
-      "title": [],
-      "description": [],
-      "importance": [],
-      "startdate": [],
-      "enddate": [],
-      "developer": [],
-      "id": 7
-    },
-    {
-      "id": 8
     }
   ]
 }
