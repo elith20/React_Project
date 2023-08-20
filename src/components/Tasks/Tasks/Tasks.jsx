@@ -14,7 +14,6 @@ export default function Tasks(props) {
 
         setIsChecked(!isChecked)
     }
-
     return (
 
     <div className={!isChecked? classes.card : classes.checkedCard}>
@@ -49,13 +48,13 @@ export default function Tasks(props) {
         <div className={classes.btn}>
             <button
                 className={classes.cardBtn}
-                onClick={() => handleEditTask(item)}
+                onClick={() => handleEditTask(item.id)}
                 disabled={disabledButton}
                 >Edit Task
             </button>
             <button
                 className={classes.cardBtn}
-                onClick={() => handleRemoveSingleTask(item)}
+                onClick={() => handleRemoveSingleTask(item.id)}
                 disabled={disabledButton}
                 >Delete Task
             </button>

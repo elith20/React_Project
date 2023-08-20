@@ -1,6 +1,7 @@
 import React from "react";
 import classes from'./AddTask.module.css'
 import { useState } from "react";
+import { Modal } from "react-bootstrap";
 
 // export default class AddTask extends Component {
 //     state = {
@@ -301,7 +302,7 @@ export default function AddTask(props){
         setStartdate([]);
         setEnddate([]);
         setDeveloper([]);
-        // handleOpenClose() 
+        handleOpenClose() 
     }
 
     function handleAddKeyDown(event){
@@ -319,7 +320,12 @@ export default function AddTask(props){
                 >New Task
             </button>
         </div>
-        <div>
+        
+        <Modal  
+            show={show}
+            onHide={handleOpenClose}
+            className={classes.Modal} 
+            >
             <form 
                 className={classes.Form} 
                 onKeyDown={handleAddKeyDown} 
@@ -349,10 +355,10 @@ export default function AddTask(props){
                         <label htmlFor="high"> High </label>
                         <input
                             id="high"
-                            value="high"
+                            value="High"
                             name="importance"
                             type="radio"
-                            checked={importance === 'high'}
+                            checked={importance === 'High'}
                             onChange={handleRadioValue}
                         />
                     </div>
@@ -360,10 +366,10 @@ export default function AddTask(props){
                         <label htmlFor="medium" > Medium </label>
                         <input
                             id="medium"
-                            value="medium"
+                            value="Medium"
                             name="importance"
                             type="radio"
-                            checked={importance === 'medium'}
+                            checked={importance === 'Medium'}
                             onChange={handleRadioValue}
                         />
                     </div>
@@ -371,10 +377,10 @@ export default function AddTask(props){
                         <label>Low </label>
                         <input
                             id="low"
-                            value="low"
+                            value="Low"
                             name="importance"
                             type="radio"
-                            checked={importance === 'low'}
+                            checked={importance === 'Low'}
                             onChange={handleRadioValue}
                         />
                     </div>
@@ -425,7 +431,7 @@ export default function AddTask(props){
                         >Close</button>
                 </div>
             </form>
-        </div>
+        </Modal>
         
         </>
 }

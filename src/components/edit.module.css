@@ -1,16 +1,20 @@
 .Header, .Body, .Footer{
-    background-color: #504f4f;
-    border: 5px ridge #66dbf9;
+    border: 5px ridge #314915;
     border-radius: 5px;
     padding: 15px;
-    background-color: #504f4f;
-    color: #66dbf9;
+    background-color: #547929;
+    color: #071607;
 }
 
 .Body{
     border-top: none;
     border-bottom: none;
+}
 
+.Label{
+    
+    background-color: #547929 !important;
+    color: #071607 !important
 }
 
 .Dates{
@@ -19,8 +23,23 @@
     padding: 5px 0px;
     box-sizing: border-box;
     margin-bottom: 10px;
+    color: #071607;
+    background-color: #547929;
+
+}
+
+.Check{
+    background-color: #547929;
+    color: #071607;
 }
 
 .Dates > *{
     width: 45%;
+    background-color: #547929;
+    border: 2px ridge #071607;
+}
+
+.Developers{
+    background-color: #547929;
+    border: 2px ridge #071607;
 }
